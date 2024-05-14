@@ -4,14 +4,15 @@ import numpy as np
 from transformers import AutoTokenizer
 import argparse
 
+
 def prepare(tokenizer, pt_corpus_dir):
     # set `model_max_length` to a very large integer to avoid warning
     tokenizer.model_max_length = int(1e30)
 
     num_proc = 32
-    pure_sql_dataset = Dataset.from_json("./codes_pretrain_corpus/pure_sql.jsonl")
-    text2code_dataset = Dataset.from_json("./codes_pretrain_corpus/text2code.jsonl")
-    text2text_dataset = Dataset.from_json("./codes_pretrain_corpus/text2text.jsonl")
+    pure_sql_dataset = Dataset.from_json("./data/corpus/pure_sql.jsonl")
+    text2code_dataset = Dataset.from_json("./data/corpus/text2code.jsonl")
+    text2text_dataset = Dataset.from_json("./data/corpus/text2text.jsonl")
 
     print(pure_sql_dataset)
     print(text2code_dataset)
@@ -90,5 +91,5 @@ def prepare(tokenizer, pt_corpus_dir):
         arr.flush()
 
 if __name__ == "__main__":
-    tokenizer = AutoTokenizer.from_pretrained("bigcode/starcoder")
-    prepare(tokenizer, "tokenized_corpus.bin")
+    tokenizer = AutoTokenizer.from_pretrained("kaist-ai/codellama-langbridge-9b")
+    prepare(tokenizer, "./data/tokenized_corpus.bin")
