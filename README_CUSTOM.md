@@ -1,7 +1,7 @@
 Download custom dataset using this command
 ```shell
 git clone https://huggingface.co/datasets/MedSQL/corpus
-git clone git@hf.co:datasets/MedSQL/query
+git clone https://huggingface.co/datasets/MedSQL/query
 ```
 
 Tokenize the dataset using this command
